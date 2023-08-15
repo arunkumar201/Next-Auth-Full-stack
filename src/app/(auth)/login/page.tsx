@@ -1,4 +1,4 @@
-import { FaApple, FaLinkedin } from "react-icons/fa";
+import { FaApple, FaGithub, FaLinkedin } from "react-icons/fa";
 
 import AuthNavBar from "@/components/AuthNavBar";
 import { FcGoogle } from "react-icons/fc";
@@ -10,8 +10,8 @@ import SocialProviders from "@/components/SocialProviders";
 const LoginPage = () => {
 	return (
 		<>
-			<div className="dark:bg-[#111212] bg-slate-200 flex w-full justify-center items-center min-h-screen  ">
-				<div className=" p-3 w-full md:w-[30rem] dark:bg-[#1F202A]  md:min-h-[90vh] h-auto  rounded-none md:rounded-3xl bg-slate-300 mt-0 mb-2 md:mb-3 md:mt-10 shadow-neutral-300/100">
+			<div className="dark:bg-[#111212] bg-slate-200 flex w-full justify-center items-center h-full  ">
+				<div className=" p-3 w-full md:w-[30rem] dark:bg-[#1F202A]  md:min-h-[90%] h-auto  rounded-none md:rounded-3xl bg-slate-300 mt-0 mb-2 md:mb-3 md:mt-10 shadow-neutral-300/100">
 					{/* Navbar for page */}
 					<AuthNavBar />
 					{/* Logo and title */}
@@ -35,8 +35,11 @@ const LoginPage = () => {
 							description={"Login With Linkedin"}
 							providerName={"Linkedin"}
 						/>
-						
-						
+						<SocialProviders
+							Icon={FaGithub}
+							description={"Login With Github"}
+							providerName={"Github"}
+						/>
 					</div>
 					{/* Separator  */}
 					<div className="all-center mt-3 p-3">
@@ -44,7 +47,11 @@ const LoginPage = () => {
 					</div>
 					{/* Form start */}
 					<div className="all-center mt-2">
-						<LoginForm linkType={"Sign up"} title={"Don’t have an account yet?"} btnType={'log in'} />  
+						<LoginForm
+							linkType={"Sign up"}
+							title={"Don’t have an account yet?"}
+							btnType={"log in"}
+						/>
 					</div>
 				</div>
 			</div>

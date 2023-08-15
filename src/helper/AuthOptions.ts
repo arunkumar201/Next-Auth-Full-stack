@@ -1,12 +1,13 @@
 // import { randomBytes, randomUUID } from "crypto";
 
-import {
-  addNewUser,
-  isUserExists,
-  updateUser,
-} from "@/app/_actions/addNewUser";
+// import {
+//   addNewUser,
+//   isUserExists,
+//   updateUser,
+// } from "@/app/_actions/addNewUser";
 
-import { MongooseError } from "mongoose";
+// import { MongooseError } from "mongoose";
+
 import { NextAuthOptions } from "next-auth";
 import { authProviders } from "./ProvidersList";
 
@@ -35,22 +36,22 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async signIn({ account, user }) {
-      if (user && account) {
-        const isExist = await isUserExists(user?.email, account?.provider);
-        if (!isExist) {
-          try {
-            await addNewUser({ account, user });
-          } catch (err: MongooseError | unknown) {
-            throw new Error("Something went wrong", err!);
-          }
-        } else {
-          await updateUser(
-            user.email,
-            account?.provider,
-            account?.access_token
-          );
-        }
-      }
+    //   if (user && account) {
+    //     const isExist = await isUserExists(user?.email, account?.provider);
+    //     if (!isExist) {
+    //       try {
+    //         await addNewUser({ account, user });
+    //       } catch (err: MongooseError | unknown) {
+    //         throw new Error("Something went wrong", err!);
+    //       }
+    //     } else {
+    //       await updateUser(
+    //         user.email,
+    //         account?.provider,
+    //         account?.access_token
+    //       );
+    //     }
+    //   }
       return true;
     },
     async session({ session }) {

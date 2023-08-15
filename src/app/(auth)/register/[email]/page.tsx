@@ -51,11 +51,10 @@ const RegisterPage = ({
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 	};
-
 	return (
 		<>
-			<div className="dark:bg-[#111212] bg-slate-200 flex w-full justify-center items-center min-h-screen">
-				<div className="w-full md:w-[30rem] dark:bg-[#1F202A] md:min-h-[90vh] h-auto rounded-none md:rounded-3xl bg-slate-300 mt-0 md:mt-10 shadow-neutral-300/100">
+			<div className="dark:bg-[#111212] bg-slate-200 flex w-full justify-center items-center min-h-full">
+				<div className="w-full md:w-[30rem] dark:bg-[#1F202A] md:min-h-[90%] h-auto rounded-none md:rounded-3xl bg-slate-300 mt-0 md:mt-10 shadow-neutral-300/100">
 					{/* Navbar for page */}
 					<AuthNavBar />
 					<div className="w-full mt-2 p-4">

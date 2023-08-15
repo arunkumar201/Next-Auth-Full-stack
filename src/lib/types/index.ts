@@ -1,5 +1,7 @@
+import { IconType } from "react-icons";
+
 export interface SocialProvidersProps{
-	Icon: any;
+	Icon: IconType;
 	description: string;
 	providerName: string;
 }

@@ -9,8 +9,7 @@ const AuthNavBar = () => {
 	const { theme, setTheme } = useTheme();
 
 	const [darkMode, setDarkMode] = useState<boolean>(() => {
-		const storedTheme = localStorage.getItem("theme");
-		return storedTheme === "dark";
+		return theme === "dark";
 	});
 
 	const handleToggle = () => {
@@ -24,9 +23,7 @@ const AuthNavBar = () => {
 		<>
 			<div className="w-full relative">
 				<div className="flex w-full justify-around gap-x-12 items-center mt-6">
-					<h3 className="title">
-						Auth-App
-					</h3>
+					<h3 className="title">Auth-App</h3>
 					<button
 						className="relative p-1 text-center text-[#000000] dark:text-white transition-colors duration-400"
 						onClick={handleToggle}
