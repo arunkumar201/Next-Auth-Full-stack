@@ -22,7 +22,7 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<ThemeProviders>
 					<AuthProvider>
-						<div className="items-center w-full min-h-screen text-white dark:bg-gray-700 bg-slate-200">
+						<div className="items-center w-full min-h-screen text-white dark:bg-gray-700 bg-gray-300">
 							{children}
 						</div>
 					</AuthProvider>

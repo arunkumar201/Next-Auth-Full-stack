@@ -10,8 +10,8 @@ import SocialProviders from "@/components/SocialProviders";
 const LoginPage = () => {
 	return (
 		<>
-			<div className="dark:bg-[#111212] bg-slate-200 flex w-full justify-center items-center min-h-screen ">
-				<div className="w-full md:w-[30rem] dark:bg-[#1F202A]  md:min-h-[90vh] h-screen  rounded-none md:rounded-3xl bg-slate-300 shadow-neutral-300/100">
+			<div className="dark:bg-[#111212] bg-slate-200 flex w-full justify-center items-center min-h-screen  ">
+				<div className=" p-3 w-full md:w-[30rem] dark:bg-[#1F202A]  md:min-h-[90vh] h-auto  rounded-none md:rounded-3xl bg-slate-300 mt-0 mb-2 md:mb-3 md:mt-10 shadow-neutral-300/100">
 					{/* Navbar for page */}
 					<AuthNavBar />
 					{/* Logo and title */}
@@ -44,7 +44,7 @@ const LoginPage = () => {
 					</div>
 					{/* Form start */}
 					<div className="all-center mt-2">
-                      <LoginForm/>  
+						<LoginForm linkType={"Sign up"} title={"Don’t have an account yet?"} btnType={'log in'} />  
 					</div>
 				</div>
 			</div>
