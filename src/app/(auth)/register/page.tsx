@@ -1,3 +1,5 @@
+"use client"
+
 import { FaApple, FaLinkedin } from "react-icons/fa";
 
 import AuthNavBar from "@/components/AuthNavBar";

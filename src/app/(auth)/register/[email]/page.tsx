@@ -2,35 +2,44 @@
 
 import { AiOutlineMail, AiOutlinePhone, AiOutlineUser } from "react-icons/ai";
 import { FaCity, FaFemale, FaMale } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 import AuthNavBar from "@/components/AuthNavBar";
 import { Button } from "@/components/ui/button";
 import { ImLocation } from "react-icons/im";
-import { useState } from "react";
+import axios from "axios";
+import { connect } from "@/dbConfig";
+import { connected } from "process";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-interface FormDataType {
+export interface FormDataType {
 	fullName: string;
 	phoneNumber: string;
 	email: string;
 	gender: string;
 	city: string;
 	country: string;
+	password: string;
 }
 const RegisterPage = ({
 	params,
 }: {
 	params: {
 		email: string;
-	};
+		};
+	
 }) => {
 	const [formData, setFormData] = useState<FormDataType>({
 		fullName: "",
 		phoneNumber: "",
-		email: "",
+		email: params.email,
 		gender: "",
 		city: "",
 		country: "",
+		password: "",
 	});
+	const router = useRouter();
 	const [selectedGender, setSelectedGender] = useState("");
 
 	const handleGenderChange = (event: any) => {
@@ -48,8 +57,24 @@ const RegisterPage = ({
 		setSelectedGender(gender);
 	};
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		try {
+			//await axios.post(url,data,options);
+			const data = {
+				...formData,
+				gender:selectedGender
+			}
+			const response = await axios.post('/api/register',data,{
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+			console.debug("🚀 ~ file: page.tsx:67 ~ handleSubmit ~ response:",response);	
+			route.push('/')
+		} catch (err) {
+			console.log(err);
+		}
 	};
 	return (
 		<>
@@ -94,6 +119,24 @@ const RegisterPage = ({
 										value={formData.fullName}
 										onChange={handleInputChange}
 										placeholder="Full Name"
+										className="input-field"
+									/>
+								</div>
+							</div>
+							<label className="text-gray-600 dark:text-gray-400">
+								Password
+							</label>
+							<div className="relative">
+								<div className="relative flex items-center">
+									<div className="input-icon">
+										<AiOutlineUser className="text-gray-400" />
+									</div>
+									<input
+										type="Password"
+										name="password"
+										value={formData.password}
+										onChange={handleInputChange}
+										placeholder="Password"
 										className="input-field"
 									/>
 								</div>

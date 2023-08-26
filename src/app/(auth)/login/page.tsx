@@ -1,4 +1,6 @@
-import { FaApple, FaGithub, FaLinkedin } from "react-icons/fa";
+"use client"
+
+import { FaApple, FaGithub, FaLinkedin, FaLock } from "react-icons/fa";
 
 import AuthNavBar from "@/components/AuthNavBar";
 import { FcGoogle } from "react-icons/fc";
@@ -26,9 +28,9 @@ const LoginPage = () => {
 							providerName={"Google"}
 						/>
 						<SocialProviders
-							Icon={FaApple}
-							description={"Login With Apple"}
-							providerName={"Apple"}
+							Icon={FaLock}
+							description={"Login With Auth0"}
+							providerName={"auth0"}
 						/>
 						<SocialProviders
 							Icon={FaLinkedin}

@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 interface LoginFormProps {
@@ -43,6 +44,22 @@ const LoginForm = (props: LoginFormProps) => {
 			setPasswordError("");
 		}
 	};
+	async function loginHandler() {
+		try {
+			const res = await signIn("credentials", {
+				callbackUrl: "/user",
+				email,
+				password,
+			});
+			console.debug("🚀 ~ file: LoginForm.tsx:51 ~ loginHandler ~ res:", res);
+		} catch (error) {
+			console.debug(
+				"🚀 ~ file: LoginForm.tsx:57 ~ loginHandler ~ error:",
+				error
+			);
+		}
+	}
+
 	return (
 		<>
 			<div className="flex justify-center items-center mt-4 w-[80%] flex-col px-4 gap-y-4">
@@ -56,7 +73,7 @@ const LoginForm = (props: LoginFormProps) => {
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						placeholder="Please enter email"
-						className="bg-[hsla(0,0%,100%,.08)] shadow-xl text-base  font-medium  py-3 px-4 rounded-md transition-colors  w-full h-12 dark:text-gray-100 text-gray-500"
+						className="bg-[hsla(0,0%,100%,.08)] shadow-xl  text-base font-semibold py-3 px-4 rounded-md transition-colors  w-full h-12 dark:text-gray-100 text-gray-700"
 					/>
 				</div>
 				{props.btnType === "log in" && (
@@ -69,7 +86,7 @@ const LoginForm = (props: LoginFormProps) => {
 								type={showPassword ? "text" : "password"}
 								id="password"
 								placeholder="Please enter password"
-								className="bg-[hsla(0,0%,100%,.08)] shadow-xl  text-base font-semibold py-3 px-4 rounded-md transition-colors  w-full h-12"
+								className="bg-[hsla(0,0%,100%,.08)] shadow-xl  text-base font-semibold py-3 px-4 rounded-md transition-colors  w-full h-12 dark:text-gray-100 text-gray-700"
 								value={password}
 								onChange={handlePasswordChange}
 								onBlur={validatePassword}
@@ -99,14 +116,14 @@ const LoginForm = (props: LoginFormProps) => {
 						</Button>
 					</Link>
 				) : (
-					<Link href={`/`} className="w-full">
+					<p className="w-full" onClick={loginHandler}>
 						<Button
 							variant={"outline"}
 							className="w-full mt-2 bg-[#7B6ECE] px-2 py-[25px] text-lg shadow-xl"
 						>
 							{props.btnType}
 						</Button>
-					</Link>
+					</p>
 				)}
 			</div>
 
